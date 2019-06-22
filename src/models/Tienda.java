@@ -8,16 +8,12 @@ public class Tienda {
 	
 	public Tienda() {
 		items = new ArrayList<Item>();
-		items.add(new Item("Leche", 20f, ""));
-		items.add(new Item("Harina", 10f, ""));
-		items.add(new Item("Yogurt", 25f, ""));
+		items.add(new Item(100, "Leche", 20f, ""));
+		items.add(new Item(101, "Harina", 10f, ""));
+		items.add(new Item(102, "Yogurt", 25f, ""));
 	}
 
 	public List<Item> getItems() {
 		return items;
-	}
-
-	public void setItems(List<Item> items) {
-		this.items = items;
 	}
 }

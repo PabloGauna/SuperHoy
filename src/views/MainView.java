@@ -13,12 +13,14 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import controllers.MainController;
 import models.Item;
 import models.MainModel;
 import vendor.ButtonColumn;
 
 public class MainView extends JFrame {
 
+	private MainController controller;
 	private JPanel contentPane;
 	private JTable table;
 
@@ -43,10 +45,10 @@ public class MainView extends JFrame {
 		JLabel lblCarrito = new JLabel("Carrito:");
 		toolBar.add(lblCarrito);
 		
-		JLabel lblItems = new JLabel("3 items");
+		JLabel lblItems = new JLabel("0 items");
 		toolBar.add(lblItems);
 		
-		JLabel label = new JLabel("$350,00");
+		JLabel label = new JLabel("$0,00");
 		toolBar.add(label);
 		
 		JButton btnFinalizarCompra = new JButton("Finalizar compra");
@@ -54,6 +56,10 @@ public class MainView extends JFrame {
 		
 		table = new JTable();
 		contentPane.add(table, BorderLayout.CENTER);
+	}
+	
+	public void setControlador(MainController viewController) {
+		controller = viewController;
 	}
 	
 	public void ActualizarItemsTable(MainModel model) {

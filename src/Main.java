@@ -12,7 +12,9 @@ public static void main(String[] args) {
 				try {
 					MainView view = new MainView();					
 					
-					new MainController(view, new MainModel());
+					MainController controller = new MainController(view, new MainModel());
+					
+					view.setControlador(controller);
 					
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -1,13 +1,19 @@
 package models;
 
 public class Item {
+	private int id;
+	public int getId() {
+		return id;
+	}
+
 	private String descripcion;
 	private float precio;
 	private String foto;
 
-	public Item(String itemDescripcion, float itemPrecio, String itemFoto) {
+	public Item(int itemId, String itemDescripcion, float itemPrecio, String itemFoto) {
 		super();
 		
+		id = itemId;
 		descripcion = itemDescripcion;
 		precio = itemPrecio;
 		foto = itemFoto;
