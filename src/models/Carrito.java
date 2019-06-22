@@ -13,10 +13,12 @@ public class Carrito {
 
 	public void agregarItem(Item item) {
 		ItemCarrito ic;
-		if ((ic = items.get(item.getId())) == null)
+		int id = item.getId();
+		
+		if ((ic = items.get(id)) == null)
 		{
-			ItemCarrito nuevoItemCarrito = new ItemCarrito(item.getId(), item.getDescripcion(), item.getPrecio(), item.getFoto(), 1);			
-			items.put(nuevoItemCarrito.getId(), nuevoItemCarrito);
+			ItemCarrito nuevoItemCarrito = new ItemCarrito(id, item.getDescripcion(), item.getPrecio(), item.getFoto(), 1);			
+			items.put(id, nuevoItemCarrito);
 		}
 		else {
 			ic.setCantidad(ic.getCantidad() + 1);
@@ -24,13 +26,17 @@ public class Carrito {
 	}
 	
 	public void removerItem(Item item) {
-		ItemCarrito ic = items.get(item.getId());
+		ItemCarrito ic;
+		int id = item.getId();	
 		
-		if (ic.getCantidad() > 1) {
-			ic.setCantidad(ic.getCantidad() - 1);
-		}
-		else {
-			items.remove(item.getId());
+		if ((ic = items.get(id)) != null) {
+		
+			if (ic.getCantidad() > 1) {
+				ic.setCantidad(ic.getCantidad() - 1);
+			}
+			else {
+				items.remove(item.getId());
+			}
 		}
 	}
 }
