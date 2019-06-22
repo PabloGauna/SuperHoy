@@ -24,6 +24,8 @@ public class MainView extends JFrame {
 	private MainController controller;
 	private JPanel contentPane;
 	private JTable table;
+	private JLabel lblItems;
+	private JLabel lblPrecio;
 
 	/**
 	 * Create the frame.
@@ -46,11 +48,11 @@ public class MainView extends JFrame {
 		JLabel lblCarrito = new JLabel("Carrito:");
 		toolBar.add(lblCarrito);
 		
-		JLabel lblItems = new JLabel("0 items");
+		lblItems = new JLabel("0 items");
 		toolBar.add(lblItems);
 		
-		JLabel label = new JLabel("$0,00");
-		toolBar.add(label);
+		lblPrecio = new JLabel("$0,00");
+		toolBar.add(lblPrecio);
 		
 		JButton btnFinalizarCompra = new JButton("Finalizar compra");
 		toolBar.add(btnFinalizarCompra);
@@ -96,5 +98,10 @@ public class MainView extends JFrame {
 		
 		new ButtonColumn(itemsTable, addAction, 3);
 		new ButtonColumn(itemsTable, deleteAction, 4);
+	}
+	
+	public void ActualizarBarraDeCarrito(MainModel model) {
+		lblItems.setText(model.carrito.getCantidadItems() + " items");
+		lblPrecio.setText("$" + model.carrito.getImporteTotal());
 	}
 }

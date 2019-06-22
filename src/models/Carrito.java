@@ -39,4 +39,24 @@ public class Carrito {
 			}
 		}
 	}
+	
+	public int getCantidadItems() {
+		int cantidad = 0;
+		
+		for (ItemCarrito i : items.values()) {
+			cantidad += i.getCantidad();
+		}
+		
+		return cantidad;
+	}
+
+	public float getImporteTotal() {
+		float total = 0;
+		
+		for (ItemCarrito i : items.values()) {
+			total += i.getPrecio() * i.getCantidad();
+		}
+		
+		return total;
+	}
 }

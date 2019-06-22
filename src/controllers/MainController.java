@@ -28,10 +28,14 @@ public class MainController {
 	public void agregarItemAlCarrito(int itemId) {
 		Item item = model.tienda.getItem(itemId);
 		model.carrito.agregarItem(item);
+		
+		view.ActualizarBarraDeCarrito(model);
 	}
 
 	public void eliminarItemDelCarrito(int itemId) {
 		Item item = model.tienda.getItem(itemId);
 		model.carrito.removerItem(item);
+		
+		view.ActualizarBarraDeCarrito(model);
 	}
 }
