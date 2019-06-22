@@ -2,6 +2,7 @@ package views;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
+import java.util.Vector;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -66,36 +67,43 @@ public class MainView extends JFrame {
 		JTable itemsTable = table;
 		DefaultTableModel tableModel = (DefaultTableModel) itemsTable.getModel();
 		
+		tableModel.addColumn("Id");
 		tableModel.addColumn("Descripcion");
 		tableModel.addColumn("Precio");
 		tableModel.addColumn("");
 		tableModel.addColumn("");
 		
 		for (Item i : model.tienda.getItems()) {
-			tableModel.addRow(new Object[] {i.getDescripcion(), i.getPrecio(), "Agregar", "Eliminar"});
+			tableModel.addRow(new Object[] {i.getId(), i.getDescripcion(), i.getPrecio(), "Agregar", "Eliminar"});
 		}
 		
-		Action addAction = new AbstractAction()
-		{
+		Action addAction = new ItemsTableAction() {
 			public void actionPerformed(ActionEvent e)
 		    {
-		        JTable table = (JTable)e.getSource();
-		        int modelRow = Integer.valueOf( e.getActionCommand() );
-		        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+				int id = this.getItemId(e);
+				
+				for (Item i : model.tienda.getItems()) {
+					if (i.getId() == id) {
+						model.carrito.getItems().add(i);
+						break;
+					}
+				}
 		    }
-		};
-		
-		Action deleteAction = new AbstractAction()
-		{
+		};		
+		Action deleteAction = new ItemsTableAction() {
 			public void actionPerformed(ActionEvent e)
 		    {
-		        JTable table = (JTable)e.getSource();
-		        int modelRow = Integer.valueOf( e.getActionCommand() );
-		        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+				int id = this.getItemId(e);
+				
+				for (Item i : model.carrito.getItems()) {
+					if (i.getId() == id) {
+						model.carrito.getItems().remove(i);
+					}
+				}
 		    }
-		};
+		};		
 		
-		ButtonColumn buttonColumnAdd = new ButtonColumn(itemsTable, addAction, 2);
-		ButtonColumn buttonColumnDelete = new ButtonColumn(itemsTable, deleteAction, 3);
+		ButtonColumn buttonColumnAdd = new ButtonColumn(itemsTable, addAction, 3);
+		ButtonColumn buttonColumnDelete = new ButtonColumn(itemsTable, deleteAction, 4);
 	}
 }
