@@ -14,14 +14,24 @@ import vendor.ButtonColumn;
 import views.MainView;
 
 public class MainController {
-	private MainView mainView;
-	private MainModel mainModel;	
+	private MainView view;
+	private MainModel model;	
 
-	public MainController(MainView view, MainModel model) {
+	public MainController(MainView mainView, MainModel mainModel) {
 		super();
-		mainView = view;
-		mainModel = model;
+		view = mainView;
+		model = mainModel;
 		
 		view.ActualizarItemsTable(model);
+	}
+
+	public void agregarItemAlCarrito(int itemId) {
+		Item item = model.tienda.getItem(itemId);
+		model.carrito.agregarItem(item);
+	}
+
+	public void eliminarItemDelCarrito(int itemId) {
+		Item item = model.tienda.getItem(itemId);
+		model.carrito.removerItem(item);
 	}
 }

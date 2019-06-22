@@ -17,6 +17,6 @@ class ItemsTableAction extends AbstractAction
 		JTable table = (JTable)e.getSource();
         int modelRow = Integer.valueOf( e.getActionCommand() );
         DefaultTableModel model = ((DefaultTableModel)table.getModel());
-        return (int) ((Vector) model.getDataVector().elementAt(0)).elementAt(0);
+        return (int) ((Vector) model.getDataVector().elementAt(modelRow)).elementAt(0);
 	}
 };

@@ -73,7 +73,7 @@ public class MainView extends JFrame {
 		tableModel.addColumn("");
 		tableModel.addColumn("");
 		
-		for (Item i : model.tienda.getItems()) {
+		for (Item i : model.tienda.getItems().values()) {
 			tableModel.addRow(new Object[] {i.getId(), i.getDescripcion(), i.getPrecio(), "Agregar", "Eliminar"});
 		}
 		
@@ -81,29 +81,20 @@ public class MainView extends JFrame {
 			public void actionPerformed(ActionEvent e)
 		    {
 				int id = this.getItemId(e);
-				
-				for (Item i : model.tienda.getItems()) {
-					if (i.getId() == id) {
-						model.carrito.getItems().add(i);
-						break;
-					}
-				}
+				controller.agregarItemAlCarrito(id);			
 		    }
-		};		
+		};	
+		
 		Action deleteAction = new ItemsTableAction() {
 			public void actionPerformed(ActionEvent e)
 		    {
 				int id = this.getItemId(e);
 				
-				for (Item i : model.carrito.getItems()) {
-					if (i.getId() == id) {
-						model.carrito.getItems().remove(i);
-					}
-				}
+				controller.eliminarItemDelCarrito(id);
 		    }
 		};		
 		
-		ButtonColumn buttonColumnAdd = new ButtonColumn(itemsTable, addAction, 3);
-		ButtonColumn buttonColumnDelete = new ButtonColumn(itemsTable, deleteAction, 4);
+		new ButtonColumn(itemsTable, addAction, 3);
+		new ButtonColumn(itemsTable, deleteAction, 4);
 	}
 }
