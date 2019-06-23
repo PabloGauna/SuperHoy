@@ -1,16 +1,11 @@
 package controllers;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
 
 import models.Item;
 import models.MainModel;
-import vendor.ButtonColumn;
+import views.FacturaView;
 import views.MainView;
 
 public class MainController {
@@ -21,6 +16,14 @@ public class MainController {
 		super();
 		view = mainView;
 		model = mainModel;
+		
+		view.adddFinalizarCompraActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {			
+				FacturaView facturaView = new FacturaView();
+				FacturaController facturaController = new FacturaController(facturaView);
+			}	
+		});
+		
 		
 		view.ActualizarItemsTable(model);
 	}

@@ -2,9 +2,8 @@ package views;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
-import java.util.Vector;
+import java.awt.event.ActionListener;
 
-import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,6 +25,7 @@ public class MainView extends JFrame {
 	private JTable table;
 	private JLabel lblItems;
 	private JLabel lblPrecio;
+	private JButton btnFinalizarCompra;
 
 	/**
 	 * Create the frame.
@@ -54,7 +54,7 @@ public class MainView extends JFrame {
 		lblPrecio = new JLabel("$0,00");
 		toolBar.add(lblPrecio);
 		
-		JButton btnFinalizarCompra = new JButton("Finalizar compra");
+		btnFinalizarCompra = new JButton("Finalizar compra");
 		toolBar.add(btnFinalizarCompra);
 		
 		table = new JTable();
@@ -103,5 +103,9 @@ public class MainView extends JFrame {
 	public void ActualizarBarraDeCarrito(MainModel model) {
 		lblItems.setText(model.carrito.getCantidadItems() + " items");
 		lblPrecio.setText("$" + model.carrito.getImporteTotal());
+	}
+	
+	public void adddFinalizarCompraActionListener(ActionListener al) {
+		btnFinalizarCompra.addActionListener(al);
 	}
 }
