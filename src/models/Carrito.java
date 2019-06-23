@@ -10,6 +10,10 @@ public class Carrito {
 		super();
 		items = new HashMap<Integer, ItemCarrito>();
 	}
+	
+	public Map<Integer, ItemCarrito> getItems() {
+		return items;
+	}
 
 	public void agregarItem(Item item) {
 		ItemCarrito ic;

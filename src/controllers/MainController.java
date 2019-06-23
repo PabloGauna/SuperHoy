@@ -20,7 +20,7 @@ public class MainController {
 		view.adddFinalizarCompraActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {			
 				FacturaView facturaView = new FacturaView();
-				FacturaController facturaController = new FacturaController(facturaView);
+				FacturaController facturaController = new FacturaController(facturaView, model);
 			}	
 		});
 		

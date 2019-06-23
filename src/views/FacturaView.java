@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 public class FacturaView extends JFrame {
 
 	private JPanel contentPane;
+	JTextArea txtrFacturatext;
 
 	/**
 	 * Launch the application.
@@ -54,7 +55,7 @@ public class FacturaView extends JFrame {
 		lblFactura.setBounds(6, 67, 588, 16);
 		contentPane.add(lblFactura);
 		
-		JTextArea txtrFacturatext = new JTextArea();
+		txtrFacturatext = new JTextArea();
 		txtrFacturatext.setEditable(false);
 		txtrFacturatext.setBounds(0, 105, 600, 392);
 		contentPane.add(txtrFacturatext);
@@ -62,5 +63,9 @@ public class FacturaView extends JFrame {
 		JButton btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.setBounds(466, 527, 117, 29);
 		contentPane.add(btnFinalizar);
+	}
+	
+	public void setFacturaText(String text) {
+		txtrFacturatext.setText(text);
 	}
 }
