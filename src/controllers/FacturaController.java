@@ -8,8 +8,12 @@ public class FacturaController {
 		String facturaText = "";
 		
 		for(ItemCarrito item : model.carrito.getItems().values()) {
-			facturaText += item.getDescripcion() + "........" + item.getPrecio() + "\n";
+			facturaText += item.getCantidad() + " x " + item.getDescripcion() + " ( " + item.getPrecio() + " ) " + "............................................" + item.getCantidad() * item.getPrecio() + "\n";
 		}
+		
+		facturaText += "\n\n";
+		
+		facturaText += "Total " + model.carrito.getCantidadItems() + " items :" + model.carrito.getImporteTotal();
 		
 		view.setFacturaText(facturaText);
 		
