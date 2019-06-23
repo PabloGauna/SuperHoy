@@ -105,7 +105,7 @@ public class MainView extends JFrame {
 		lblPrecio.setText("$" + model.carrito.getImporteTotal());
 	}
 	
-	public void adddFinalizarCompraActionListener(ActionListener al) {
+	public void addFinalizarCompraActionListener(ActionListener al) {
 		btnFinalizarCompra.addActionListener(al);
 	}
 }

@@ -17,10 +17,10 @@ public class MainController {
 		view = mainView;
 		model = mainModel;
 		
-		view.adddFinalizarCompraActionListener(new ActionListener() {
+		view.addFinalizarCompraActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {			
 				FacturaView facturaView = new FacturaView();
-				FacturaController facturaController = new FacturaController(facturaView, model);
+				new FacturaController(facturaView, model);
 			}	
 		});
 		
