@@ -16,12 +16,12 @@ public class MainController {
 		super();
 		view = mainView;
 		model = mainModel;
-		
+
 		view.addFinalizarCompraActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {			
+			public void actionPerformed(ActionEvent e) {
 				FacturaView facturaView = new FacturaView();
 				new FacturaController(facturaView, model);
-			}	
+			}
 		});
 		
 		

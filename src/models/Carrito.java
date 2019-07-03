@@ -25,7 +25,8 @@ public class Carrito {
 			items.put(id, nuevoItemCarrito);
 		}
 		else {
-			ic.setCantidad(ic.getCantidad() + 1);
+			int nuevaCantidad = ic.getCantidad() + 1;
+			ic.setCantidad(nuevaCantidad);
 		}
 	}
 	
